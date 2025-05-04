@@ -4,7 +4,7 @@ import { Menu, Button, Drawer, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { logout } from "@/redux/features/auth/authSlice";
-import { clearCart } from "@/redux/features/cart/cartSlice";
+
 
 const items = [
   {
@@ -31,7 +31,7 @@ const MenubarEco = () => {
 
   const handleLogout = () => {
     dispatch(logout());
-    dispatch(clearCart());
+ 
     message.success("Logout successfully");
   };
 

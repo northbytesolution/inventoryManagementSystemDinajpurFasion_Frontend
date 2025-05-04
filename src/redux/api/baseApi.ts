@@ -21,7 +21,7 @@ const baseQuery = fetchBaseQuery({
     const token = (getState() as RootState).auth.token;
     console.log(token);
     if (token) {
-      headers.set("authorization", `${token}`);
+      headers.set("Authorization", `Token ${token}`);
     }
     return headers;
   },
@@ -49,7 +49,7 @@ const baseQueryWithRefreshToken: BaseQueryFn<
     //   method: 'POST',
     //   credentials: 'include',
     // });
-    const res = await fetch("http://localhost:3333/api/auth/refresh-token", {
+    const res = await fetch("http://localhost:3333/api/v1/auth/refresh-token", {
       method: "POST",
       credentials: "include",
     });
@@ -77,7 +77,7 @@ const baseQueryWithRefreshToken: BaseQueryFn<
 
       result = await baseQuery(args, api, extraOptions);
     } else {
-      api.dispatch(logout());
+      // api.dispatch(logout());
     }
   }
 
@@ -86,7 +86,7 @@ const baseQueryWithRefreshToken: BaseQueryFn<
 
 export const baseApi = createApi({
   reducerPath: "baseApi",
-  baseQuery: baseQueryWithRefreshToken,
+  baseQuery: baseQuery,
   tagTypes: [
     "users",
     "products",
@@ -95,6 +95,8 @@ export const baseApi = createApi({
     "user",
     "order",
     "brands",
+    "category",
+    "categories",
   ],
   endpoints: () => ({}),
 });

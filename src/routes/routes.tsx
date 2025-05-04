@@ -20,7 +20,7 @@ import SignupForm from '@/pages/Signup';
 const router = createBrowserRouter([
 
   {
-    path: '/admin',
+    path: '/',
     element: (
       <ProtectedRoute role="admin">
         <DashboardLayout />

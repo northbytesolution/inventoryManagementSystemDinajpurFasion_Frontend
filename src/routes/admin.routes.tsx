@@ -1,5 +1,7 @@
 import AdminDashboard from "@/pages/dashboard/AdminDashboard";
-import OrderTable from "@/pages/dashboard/Orders/OrderTable";
+import Attributes from "@/pages/dashboard/DataEntry/Attributes";
+import Category from "@/pages/dashboard/DataEntry/Category";
+
 import Add_Products from "@/pages/dashboard/Products/Add_Products";
 import Product_table from "@/pages/dashboard/Products/Product_table";
 import UserManagement from "@/pages/dashboard/UserManagement/UserManagement";
@@ -7,8 +9,18 @@ import UserManagement from "@/pages/dashboard/UserManagement/UserManagement";
 export const adminPaths = [
   {
     name: 'Dashboard',
-    path: 'dashboard',
+    path: '/',
     element: <AdminDashboard />,
+  },
+  {
+    name: 'Category',
+    path: '/category',
+    element: <Category/>,
+  },
+  {
+    name: 'Attributes',
+    path: '/attributes',
+    element: <Attributes/>,
   },
   {
     name: 'Users',
@@ -25,11 +37,7 @@ export const adminPaths = [
     path: 'productTable',
     element: <Product_table />,
   },
-  {
-    name: 'OrderTable',
-    path: 'orderTable',
-    element: <OrderTable />,
-  },
+
 
 ];
 
