@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { baseApi } from "@/redux/api/baseApi";
-import {  TCategory, TQueryParam, TResponseRedux } from "@/types";
+import {  TCategory, TCategoryResponse, TQueryParam, TResponseRedux } from "@/types";
 
 
 
@@ -12,6 +12,7 @@ const categoryManagementApi = baseApi.injectEndpoints({
           method: "POST",
           body: data,
         }),
+        invalidatesTags: ['categories'], // <-- Invalidate to trigger refetch
       }),
     getAllCategorys: builder.query({
       query: (args: TQueryParam[] | undefined) => {
@@ -28,11 +29,11 @@ const categoryManagementApi = baseApi.injectEndpoints({
         };
       },
       providesTags: ["categories"],
-      transformResponse: (response: TResponseRedux<any>) => {
+      transformResponse: (response: TCategoryResponse) => {
         return {
             
           data: response,
-          meta: response.meta,
+          // meta: response.data.meta,
         };
       },
     }),

@@ -1,3 +1,4 @@
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -13,6 +14,28 @@ export type TCategory = {
   };
   
   export type TCategoryResponse = {
+    // success: boolean;
+    // message: string;
+    // data: {
+    //   meta: {
+    //     page: number;
+    //     limit: number;
+    //     total: number;
+    //     totalPage: number;
+    //   };
+    //   result: TCategory[];
+    // };
+    result: TCategory[];
+  };
+
+
+  export type  TAttribute ={
+    id: number;
+    name: string;
+    slug: string;
+    // items: Item[]; // Replace `Item` with the actual type of your product/item object
+  }
+  export type TAttributeResponse = {
     success: boolean;
     message: string;
     data: {
@@ -22,6 +45,6 @@ export type TCategory = {
         total: number;
         totalPage: number;
       };
-      result: TCategory[];
+      result: TAttribute[];
     };
   };

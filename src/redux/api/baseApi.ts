@@ -97,6 +97,7 @@ export const baseApi = createApi({
     "brands",
     "category",
     "categories",
+    "attributes",
   ],
   endpoints: () => ({}),
 });

@@ -2,8 +2,7 @@
 import React from "react";
 import { Tree, TreeDataNode, Typography, Space } from "antd";
 import {
-  SmileOutlined,
-  FrownOutlined,
+
   DownOutlined,
 } from "@ant-design/icons";
 
@@ -21,7 +20,7 @@ interface Category {
   children: Category[];
 }
 
-const CategoryList = ({ categories }: { categories: Category[] }) => {
+const CategoryList = ({ categories }: { categories: any }) => {
   const handleDelete = (id: number) => {
     console.log("Delete category ID:", id);
     // Implement actual delete logic here

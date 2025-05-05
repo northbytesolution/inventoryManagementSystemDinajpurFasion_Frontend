@@ -5,6 +5,7 @@ import { Form, Input, Select, Button, message } from 'antd';
 
 import { useAddCategoryMutation, useGetAllCategorysQuery } from '@/redux/features/admin/dataEntry/Category.api';
 import CategoryList from '@/components/dataEntry/CategoryList';
+import { TCategory } from '@/types';
 
 
 
@@ -15,20 +16,14 @@ interface Category {
   parent?: string;
 }
 
-// const initialCategories: Category[] = [
-//   { id: '1', name: 'Electronics', slug: 'electronics' },
-//   { id: '2', name: 'Laptops', slug: 'laptops', parent: 'Electronics' },
-//   { id: '3', name: 'Phones', slug: 'phones', parent: 'Electronics' },
-//   { id: '4', name: 'Fashion', slug: 'fashion' },
-// ];
 
 const Category: React.FC = () => {
   const [form] = Form.useForm();
   // const [categories, setCategories] = useState<Category[]>(initialCategories);
-  const [addCategory, { isLoading: isAdding }] = useAddCategoryMutation();
+  const [addCategory] = useAddCategoryMutation();
   const { data: categories, isFetching } = useGetAllCategorysQuery(undefined);
 
-  console.log(categories);
+  // console.log(categories);
   
   const onFinish =async (values: any) => {
     // const newCategory: Category = {
@@ -38,9 +33,9 @@ const Category: React.FC = () => {
     console.log(values);
     await addCategory(values).unwrap();
     message.success("Category added successfully");
-    // form.resetFields();
+    form.resetFields();
   };
- if(isFetching){
+ if(isFetching ){
   return "Loading...";
  }
  else
@@ -64,9 +59,9 @@ const Category: React.FC = () => {
             </Form.Item>
             <Form.Item label="Parent Category" name="parentCategoryId">
               <Select placeholder="Select Parent Category" allowClear>
-                {categories?.data.map(cat => (
+                {Array.isArray(categories?.data) && categories?.data.map((cat: TCategory) => (
                   <Select.Option key={cat.id} value={cat.id}>
-                    {cat.name}
+                  {cat.name}
                   </Select.Option>
                 ))}
               </Select>
@@ -78,7 +73,7 @@ const Category: React.FC = () => {
             </Form.Item>
           </Form>
         </div>
-        <CategoryList categories={categories?.data}/>
+        <CategoryList categories={categories?.data || []}/>
     
       </div>
     </div>
