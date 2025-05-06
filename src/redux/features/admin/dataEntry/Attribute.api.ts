@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { baseApi } from "@/redux/api/baseApi";
-import {   TAttribute, TAttributeResponse, TQueryParam, TResponseRedux } from "@/types";
+import {    TAttributeResponse, TQueryParam } from "@/types";
 
 
 
@@ -38,13 +38,13 @@ const attributesManagementApi = baseApi.injectEndpoints({
       },
     }),
 
-    getCategoryById: builder.query({
-      query: (categoryId) => ({
-        url: `/categorys/${categoryId}`,
-        method: "GET",
-      }),
-      transformResponse: (response: TResponseRedux<TAttribute>) => response.data,
-    }),
+    // getCategoryById: builder.query({
+    //   query: (categoryId) => ({
+    //     url: `/categorys/${categoryId}`,
+    //     method: "GET",
+    //   }),
+    //   transformResponse: (response: TResponseRedux<TAttribute>) => response.data,
+    // }),
 
 
  
@@ -71,7 +71,7 @@ const attributesManagementApi = baseApi.injectEndpoints({
 export const {
     useAddAttributesMutation,
   useGetAllAttributesQuery,
-  useGetCategoryByIdQuery,
+  // useGetCategoryByIdQuery,
 
   useDeleteAttributesMutation,
  

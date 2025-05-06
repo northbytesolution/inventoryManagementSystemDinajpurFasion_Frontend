@@ -19,7 +19,7 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (user) {
-      const redirectTo = location.state?.from?.pathname || (user.roles[0] === "admin" ? "/admin/dashboard" : user.roles === "customer" ? "/" : "login");
+      const redirectTo = location.state?.from?.pathname || (user.roles[0] === "admin" ? "/" : user.roles === "customer" ? "/" : "login");
       navigate(redirectTo);
     }
   }, [user, navigate, location]);
