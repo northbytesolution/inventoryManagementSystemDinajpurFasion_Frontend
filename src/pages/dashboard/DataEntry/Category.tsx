@@ -3,7 +3,7 @@ import React from 'react';
 import { Form, Input, Select, Button, message } from 'antd';
 
 
-import { useAddCategoryMutation, useGetAllCategorysQuery } from '@/redux/features/admin/dataEntry/Category.api';
+import { useAddCategoryMutation, useGetAllCategoryQuery } from '@/redux/features/admin/dataEntry/Category.api';
 import CategoryList from '@/components/dataEntry/CategoryList';
 import { TCategory } from '@/types';
 
@@ -21,7 +21,7 @@ const Category: React.FC = () => {
   const [form] = Form.useForm();
   // const [categories, setCategories] = useState<Category[]>(initialCategories);
   const [addCategory] = useAddCategoryMutation();
-  const { data: categories, isFetching } = useGetAllCategorysQuery(undefined);
+  const { data: categories, isFetching } = useGetAllCategoryQuery(undefined);
 
   // console.log(categories);
   

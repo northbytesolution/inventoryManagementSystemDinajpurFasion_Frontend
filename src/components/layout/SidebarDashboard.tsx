@@ -3,6 +3,7 @@ import { Menu } from "antd";
 import {
   DashboardOutlined,
   FormOutlined,
+  ProductOutlined,
 } from "@ant-design/icons";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -37,6 +38,15 @@ const SidebarDashboard: React.FC = () => {
               { key: "/brand", label: "Brand" },
               { key: "/tag", label: "Tag" },
               { key: "/location", label: "Location" },
+            ],
+          },
+          {
+            key: "items",
+            icon: <ProductOutlined />,
+            label: "items",
+            children: [
+              { key: "/addItem", label: "Add Items" },
+              { key: "/productTable", label: "All Items" },
             ],
           },
         ]}

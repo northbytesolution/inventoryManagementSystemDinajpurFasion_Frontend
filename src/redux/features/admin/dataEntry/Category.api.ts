@@ -14,7 +14,7 @@ const categoryManagementApi = baseApi.injectEndpoints({
         }),
         invalidatesTags: ['categories'], // <-- Invalidate to trigger refetch
       }),
-    getAllCategorys: builder.query({
+    getAllCategory: builder.query({
       query: (args: TQueryParam[] | undefined) => {
         const params = new URLSearchParams();
         if (args) {
@@ -36,6 +36,7 @@ const categoryManagementApi = baseApi.injectEndpoints({
           // meta: response.data.meta,
         };
       },
+      
     }),
 
     getCategoryById: builder.query({
@@ -51,9 +52,10 @@ const categoryManagementApi = baseApi.injectEndpoints({
 
     deleteCategory: builder.mutation({
       query: (id) => ({
-        url: `/categorys/${id}`,
+        url: `/inventory/categories/${id}`,
         method: "DELETE",
       }),
+      invalidatesTags: ['categories'], // <-- Invalidate to trigger refetch
     }),
   
     updateCategory: builder.mutation({
@@ -69,7 +71,7 @@ const categoryManagementApi = baseApi.injectEndpoints({
 
 export const {
     useAddCategoryMutation,
-  useGetAllCategorysQuery,
+  useGetAllCategoryQuery,
   useGetCategoryByIdQuery,
 
   useDeleteCategoryMutation,
